@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style type="text/css">
+.texto {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #003;
+	font-weight: bold;
+}
+.titulo {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #C00;
+}
+</style>
+
+<script type="text/javascript">
+
+  function checkForm(form)
+  {
+   
+    re = /[a-z]\.[a-z]/;
+    if(!re.test(form.usuario.value)) {
+      alert("Error: Usuario debe contener solo letras con el formato nombre.apellido!");
+      form.username.focus();
+      return false;
+    }
+
+    if(form.pass.value.length < 6) {
+        alert("Error: Password debe contener minimo 6 caracteres.!");
+        form.pass.focus();
+        return false;
+      }
+	  var re =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/;
+      if(!re.test(form.pass.value)) {
+        alert("Vaidar complejidad del password!");
+        form.pass.focus();
+        return false;
+      }
+
+    alert("You entered a valid password: " + form.pass.value);
+    return true;
+  }
+
+</script>
+</head>
+
+<body>
+<div>
+<h1 class="titulo">Registro</h1>
+<form method="POST" action="Validar.php" onsubmit="return checkForm(this);">
+<table width="472" border="1" class="texto">
+  <tr>
+    <td width="150">Nombre de usuario</td>
+    <td width="150"><input name="usuario" type="text" id="usuario" required/></td>
+     <td width="150">nombre.apellido</td>
+  </tr>
+  <tr>
+    <td>Contraseña</td>
+    <td><input name="pass" type="password" id="pass" required/></td>
+     <td>mayusculas, minusculas, símbolos, numeros</td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><input name="email" type="email" id="email" placeholder="Incluya un email valido" required/></td>
+     <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Fecha de nacimiento</td>
+    <td><input name="fechanac" type="date" id="fechanac" required/></td>
+     <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Campo oculto</td>
+    <td><input name="oculto" type="hidden" id="oculto" /></td>
+     <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit"></td>
+     <td>&nbsp;</td>
+  </tr>
+</table>
+</form>
+</div>
+</body>
+</html>
